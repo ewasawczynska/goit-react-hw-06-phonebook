@@ -1,21 +1,24 @@
 import { InputFiltrStyled, LabelFiltrStyled } from './InputFiltr.styled';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/actions';
 
-export default function InputFiltr({ value, onChange }) {
+export const InputFiltr = () => {
+
+  const dispatch = useDispatch();
+
+  const handleFilterChange = e => {
+    const newFilter = e.target.value;
+    dispatch(setFilter(newFilter));
+  };
+
   return (
     <LabelFiltrStyled>
       Filtr contacts by name:
       <InputFiltrStyled
         type="text"
-        value={value}
-        onChange={onChange}
+        onChange={handleFilterChange}
         placeholder="enter name"
       />
     </LabelFiltrStyled>
   );
 }
-
-InputFiltr.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};

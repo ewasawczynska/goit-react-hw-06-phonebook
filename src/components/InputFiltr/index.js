@@ -1,3 +1,3 @@
-import InputFiltr from './InputFiltr';
+import { InputFiltr } from "./InputFiltr";
 
 export { InputFiltr };
