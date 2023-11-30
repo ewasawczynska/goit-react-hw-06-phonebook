@@ -1,4 +1,4 @@
-import { StyledInput } from './ContactForm.styled';
+import { StyledForm, StyledInput, StyledLabel } from './ContactForm.styled';
 import { Button } from 'components/Button';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,23 +17,22 @@ export const ContactForm = () => {
     const id = nanoid();
     const newContact = { id, name, number };
     const form = e.target;
-
-    if (
-      contacts.find(contact => contact.name.toLowerCase() !== name.toLowerCase())
-    ) {
-      dispatch(addContact(newContact))
-    } else {
-      alert(`${name} already exist`)
-    }
-
     form.reset();
+    dispatch(addContact(newContact));
+      if (
+        contacts.find(contact => contact.name.toLowerCase()) !==
+        name.toLowerCase()
+      ) {
+        dispatch(addContact(newContact));
+        } else {
+        alert(`${newContact.name} already exists!`);
+        }
+
   };
 
-
-
   return (
-    <form onSubmit={onSubmit}>
-      <label>
+    <StyledForm onSubmit={onSubmit}>
+      <StyledLabel>
         Name
         <StyledInput
           type="text"
@@ -44,8 +43,8 @@ export const ContactForm = () => {
           value={contacts.name}
           onChange={e => setName(e.target.value)}
         />
-      </label>
-      <label>
+      </StyledLabel>
+      <StyledLabel>
         Number
         <StyledInput
           type="tel"
@@ -56,8 +55,8 @@ export const ContactForm = () => {
           value={contacts.number}
           onChange={e => setNumber(e.target.value)}
         />
-      </label>
+      </StyledLabel>
       <Button type="submit">Add contact</Button>
-    </form>
+    </StyledForm>
   );
 };
