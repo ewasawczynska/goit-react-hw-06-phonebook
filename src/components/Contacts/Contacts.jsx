@@ -12,7 +12,7 @@ export const Contacts = () => {
 
   const getFilteredContacts = () => {
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+      contact.name?.toLowerCase().includes(filter.toLowerCase())
     );
   };
 
@@ -21,7 +21,7 @@ export const Contacts = () => {
   return (
     <ul>
       {filteredContacts.map(contact => (
-        <StyledContact>
+        <StyledContact key={contact.id}>
         {contact.name}: {contact.number}
         <Button
           type="button"

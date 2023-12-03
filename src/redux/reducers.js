@@ -16,7 +16,7 @@ export const contactsReducer = createReducer(contactsInitialState, {
 
   // FILTER
 
-  const filtersInitialState = [];
+  const filtersInitialState = '';
 
   export const filtersReducer = createReducer(filtersInitialState, {
     [setFilter]: (state, action) => {

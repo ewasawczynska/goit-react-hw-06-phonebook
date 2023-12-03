@@ -18,14 +18,14 @@ export const ContactForm = () => {
     const newContact = { id, name, number };
     const form = e.target;
     form.reset();
-    dispatch(addContact(newContact));
+   
       if (
-        contacts.find(contact => contact.name.toLowerCase()) !==
-        name.toLowerCase()
+        contacts.find(contact => contact.name.toLowerCase() ===
+        name.toLowerCase())
       ) {
-        dispatch(addContact(newContact));
-        } else {
         alert(`${newContact.name} already exists!`);
+        } else {
+          dispatch(addContact(newContact));
         }
 
   };
